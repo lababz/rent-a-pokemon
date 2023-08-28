@@ -12,5 +12,11 @@
 
   <body>
     <%= yield %>
+    <%= render "shared/navbar" %>
+    <%= render "shared/flashes" %>
+    <p class="notice"><%= notice %></p> <%# same as render flashes? %>
+    <p class="alert"><%= alert %></p> <%# same as render flashes? %>
+    <%= yield %>
+    <%= render "shared/footer" %>
   </body>
 </html>
