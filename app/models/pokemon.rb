@@ -1,0 +1,13 @@
+class Pokemon < ApplicationRecord
+  # associations
+  belongs_to :user
+  has_many :bookings, dependent: :destroy
+  has_many :reviews, through: :bookings, dependent: :destroy
+  has_many_attached :image
+
+  # validations
+  validates :name, presence: true, uniqueness: true
+  validates :description, presence: true, length: { minimum: 10 }
+  validates :pokemon_type, presence: true
+  validates :location, presence: true
+end
