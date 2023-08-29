@@ -1,18 +1,24 @@
 <div class="container">
-  <h1>Select a pokemon 💦🔥🌱</h1>
-  <p>Comming Soon</p>
-  <div>
+  <h1 class="text-center mt-5">All your Pokemons in Pokedex💦🔥🌱</h1>
+  <div class="row justify-content-center mt-5">
     <% if @pokemons.empty? %>
-    <p>No pokemon yet!</p>
-  <% else %>
-    <!-- Cards -->
-    <div class="cards-container">
-      <div class="cards">
-        <% @pokemons.each do |pokemon| %>
-          <div class="card" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url(<%= pokemon.photo.attached? ? cl_image_path(pokemon.photo.key) :asset_path('pokemon_background.jpg') %>)"><%= link_to "", pokemon_path(pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this pokemon?" }, class: "fa-solid fa-xmark" %><%= link_to pokemon[:name], pokemon_path(pokemon[:id]) %></div>
-        <% end %>
+      <p class="text-center">No pokemon yet!</p>
+    <% else %>
+      <!-- Cards -->
+      <div class="col-md-10">
+        <div class="row">
+          <% @pokemons.each do |pokemon| %>
+            <div class="col-md-4 mb-4">
+              <div class="card shadow" data-aos="zoom-in">
+                <%= image_tag pokemon.images.first, class: "img-fluid", style: "height: 200px; object-fit: cover; object-position: center;" %>
+                <div class="card-body text-center">
+                  <%= link_to pokemon[:name], pokemon_path(pokemon[:id]), class: "card-title" %>
+                </div>
+              </div>
+            </div>
+          <% end %>
+        </div>
       </div>
-    </div>
-  <% end %>
+    <% end %>
   </div>
 </div>
