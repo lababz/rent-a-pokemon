@@ -1,16 +1,21 @@
 <div class="container">
-  <h1>Select a pokemon 💦🔥🌱</h1>
-  <p>Comming Soon</p>
-  <div>
+  <h1 class="text-center mt-5">Select a Pokemon 💦🔥🌱</h1>
+  <p class="text-center">Coming Soon</p>
+  <div class="row justify-content-center mt-5">
     <% if @pokemons.empty? %>
-      <p>No pokemon yet!</p>
+      <p class="text-center">No pokemon yet!</p>
     <% else %>
       <!-- Cards -->
-      <div class="cards-container">
-        <div class="cards">
+      <div class="col-md-8">
+        <div class="row">
           <% @pokemons.each do |pokemon| %>
-            <div class="card" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= cl_image_path(pokemon.image, height: 300, width: 400, crop: :fill) %>');">
-              <%= link_to pokemon[:name], pokemon_path(pokemon[:id]) %>
+            <div class="col-md-4 mb-4">
+              <div class="card" data-aos="zoom-in">
+                <div class="card-img-top" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= cl_image_path(pokemon.images.first.url, height: 300, width: 400, crop: :fill) %>')"></div>
+                <div class="card-body">
+                  <%= link_to pokemon[:name], pokemon_path(pokemon[:id]), class: "card-title" %>
+                </div>
+              </div>
             </div>
           <% end %>
         </div>

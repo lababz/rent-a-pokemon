@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
   # # Affiche la liste des Pokémon
   def index
-      @pokemons = Pokemon.all
+    @pokemons = Pokemon.all
   end
 
   # Affiche les détails d'un Pokémon
@@ -29,6 +29,6 @@ class PokemonsController < ApplicationController
 
   # Définit les paramètres autorisés pour le Pokémon
   def pokemon_params
-    params.require(:pokemon).permit(:name, :description, :pokemon_type, :location, :images)
+    params.require(:pokemon).permit(:name, :description, :pokemon_type, :location, images: [])
   end
 end

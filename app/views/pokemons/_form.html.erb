@@ -1,16 +1,24 @@
-<%= simple_form_for(@pokemon) do |f| %>
-<%= f.error_notification %>
-<%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6">
+      <%= simple_form_for(@pokemon, html: { class: 'custom-form' }) do |f| %>
+        <%= f.error_notification %>
+        <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
-  <div class="form-inputs">
-    <%= f.input :name %>
-    <%= f.input :description %>
-    <%= f.input :pokemon_type %>
-    <%= f.input :location %>
-    <%= f.input :image, as: :file, input_html: { multiple: true} %>
-  </div>
+        <h2 class="text-center mb-4">Create a New Pokemon</h2>
 
-  <div class="form-actions">
-    <%= f.button :submit %>
+        <div class="form-inputs">
+          <%= f.input :name, label: 'Name' %>
+          <%= f.input :description, label: 'Description' %>
+          <%= f.input :pokemon_type, label: 'Pokemon Type' %>
+          <%= f.input :location, label: 'Location' %>
+          <%= f.input :images, as: :file, label: 'Images', input_html: { multiple: true } %>
+        </div>
+
+        <div class="form-actions text-center">
+          <%= f.button :submit, class: 'btn btn-danger' %>
+        </div>
+      <% end %>
+    </div>
   </div>
-<% end %>
+</div>
