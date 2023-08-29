@@ -21,25 +21,42 @@ puts "Creating users..."
   )
 end
 
+User.create( email: "cianci.dylan@gmail.com", password: "1234567", password_confirmation: "1234567")
+
 puts "Creating pokemons..."
 
-pokemon_types = [
-  "Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting",
-  "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost",
-  "Dragon", "Dark", "Steel", "Fairy"
+pokemon_data = [
+  {
+    name: "Pikachu",
+    description: "Un petit Pokémon électrique avec des joues rouges.",
+    pokemon_type: "Électrique",
+    location: "Forêt de Jade",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
+  },
+  {
+    name: "Bulbizarre",
+    description: "Un Pokémon plante avec une plante sur son dos.",
+    pokemon_type: "Plante",
+    location: "Parc Safari",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+  },
+  # ... Ajoutez les autres entrées de la liste de Pokémon ici ...
 ]
 
-file1 = URI.open("https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/8/89/Pikachu.jpg")
+# Find or create the user with the specified email
+userTest = User.find_or_create_by(email: "cianci.dylan@gmail.com")
 
-10.times do
+# Create Pokémon records with associated images and user
+pokemon_data.each do |data|
+  file = URI.open(data[:image_url])
   pokemon = Pokemon.new(
-    name: Faker::Games::Pokemon.name,
-    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-    pokemon_type: pokemon_types.sample,
-    location: Faker::Address.full_address,
-    user: User.all.sample
+    name: data[:name],
+    description: data[:description],
+    pokemon_type: data[:pokemon_type],
+    location: data[:location],
+    user: userTest
   )
-  pokemon.photo.attach(io: file1, filename: "Pokem.png", content_type: "image/png")
+  pokemon.images.attach(io: file, filename: "pokemon_image.png", content_type: "image/png")
   pokemon.save
 end
 
