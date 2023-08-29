@@ -1,16 +1,7 @@
 class PokemonsController < ApplicationController
   # # Affiche la liste des Pokémon
   def index
-    if params[:type]
-      @pokemons = Pokemon.where("type LIKE ?", "%#{params[:type]}%")
-    else
-      @pokemons = Pokemon.all
-    end
-
-    respond_to do |format|
-      format.html
-      format.js
-    end
+    @pokemons = Pokemon.all
   end
 
   # Affiche les détails d'un Pokémon

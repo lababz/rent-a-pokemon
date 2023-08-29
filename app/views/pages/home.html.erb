@@ -9,9 +9,9 @@
     </div>
   </div>
 </div>
-<%= form_tag(pokemons_path, method: "get", id: "type-filter-form") do %>
-  <%= select_tag(:pokemon_type, options_for_select(Pokemon::TYPES, params[:pokemon_type]), prompt: "Sélectionnez un type") %>
-  <%= submit_tag("Filtrer par type") %>
+<%= form_with(url: root_path, method: "get", local: true) do |form| %>
+  <%= form.select :pokemon_type, options_for_select(Pokemon::TYPES, params[:pokemon_type]), include_blank: true %>
+  <%= form.submit "Rechercher" %>
 <% end %>
 
 
