@@ -10,4 +10,6 @@ class Pokemon < ApplicationRecord
   validates :description, presence: true, length: { minimum: 10 }
   validates :pokemon_type, presence: true
   validates :location, presence: true
+  
+  TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 'Steel', 'Fairy']
 end

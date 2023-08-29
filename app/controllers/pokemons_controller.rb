@@ -1,8 +1,8 @@
 class PokemonsController < ApplicationController
   # # Affiche la liste des Pokémon
-  # def index
-  #     @pokemons = Pokemon.all
-  # end
+  def index
+    @pokemons = Pokemon.all
+  end
 
   # Affiche les détails d'un Pokémon
   def show
