@@ -1,0 +1,17 @@
+<div class="container">
+  <h1>Book a pokémon</h1>
+  <%= simple_form_for [pokemon, booking] do |f| %>
+    <!-- Modal Body Start -->
+    <div class="modal-body">
+      <%= f. : %>
+      <%= f.input :comment, placeholder: "Enter a comment about the movie" %>
+    </div>
+    <!-- Modal Footer Start -->
+    <div class="modal-footer">
+      <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><span class="fa-solid fa-xmark"></span> Cancel</button>
+      <%= button_tag type: 'submit', class: "button postfix btn btn-outline-success" do %>
+        <i class="fa-solid fa-plus"></i><span> Add a movie</span>
+      <% end %>
+    </div>
+  <% end %>
+</div>
