@@ -25,6 +25,12 @@ class PokemonsController < ApplicationController
     end
   end
 
+  def destroy
+    @pokemon = Pokemon.find(params[:id])
+    @pokemon.destroy
+    redirect_to pokemons_path
+  end
+
   private
 
   # Définit les paramètres autorisés pour le Pokémon
