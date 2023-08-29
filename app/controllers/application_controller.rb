@@ -3,6 +3,7 @@ class ApplicationController < ActionController::Base
 
   private
 
+  # Définit l'utilisateur actuellement connecté
   def set_current_user
     @current_user = current_user
   end

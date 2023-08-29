@@ -1,4 +1,5 @@
 class ReviewsController < ApplicationController
+  # Crée une nouvelle review pour un booking
   def create
     @pokemon = Pokemon.find(params[:pokemon_id])
     @booking = Booking.find(params[:booking_id]) # TODO: checek s'il y a bien un paramètre pour l'ID du booking
@@ -13,6 +14,7 @@ class ReviewsController < ApplicationController
 
   private
 
+  # Définit les paramètres autorisés pour la review
   def review_params
     params.require(:review).permit(:rating, :content)
   end
