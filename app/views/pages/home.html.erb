@@ -9,9 +9,11 @@
     </div>
   </div>
 </div>
-<%= form_with(url: root_path, method: "get", local: true) do |form| %>
-  <%= form.select :pokemon_type, options_for_select(Pokemon::TYPES, params[:pokemon_type]), include_blank: true %>
-  <%= form.submit "Rechercher" %>
+<%= form_with(url: root_path, method: "get", local: true, html: { class: "search-form text-center" }) do |form| %>
+  <div class="d-inline-block">
+    <%= form.select :pokemon_type, options_for_select(Pokemon::TYPES, params[:pokemon_type]), include_blank: "Sélectionner un type", class: "select-input custom-select mb-2" %>
+    <%= form.submit "Rechercher", class: "btn btn-danger submit-button btn-sm" %>
+  </div>
 <% end %>
 
 
