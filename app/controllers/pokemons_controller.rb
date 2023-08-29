@@ -21,8 +21,14 @@ class PokemonsController < ApplicationController
     if @pokemon.save
       redirect_to @pokemon, notice: 'Pokemon was successfully created.'
     else
-      render :new
+      render :new, status: :unprocessable_entity
     end
+  end
+
+  def destroy
+    @pokemon = Pokemon.find(params[:id])
+    @pokemon.destroy
+    redirect_to pokemons_path
   end
 
   private

@@ -1,0 +1,11 @@
+.button-group {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 20px;
+  width: 100%; /* Largeur maximale */
+}
+
+.button-left,
+.button-right {
+  flex: 1; /* Parts égales pour chaque bouton */
+}

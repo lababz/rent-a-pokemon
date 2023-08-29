@@ -3,7 +3,7 @@ class Pokemon < ApplicationRecord
   belongs_to :user
   has_many :bookings, dependent: :destroy
   has_many :reviews, through: :bookings, dependent: :destroy
-  has_many_attached :image
+  has_many_attached :images
 
   # validations
   validates :name, presence: true, uniqueness: true
