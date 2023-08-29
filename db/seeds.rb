@@ -40,10 +40,52 @@ pokemon_data = [
     location: "Parc Safari",
     image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
   },
-  # ... Ajoutez les autres entrées de la liste de Pokémon ici ...
+  {
+    name: "Salamèche",
+    description: "Un lézard de feu avec une flamme à la queue.",
+    pokemon_type: "Feu",
+    location: "Mont Sélénite",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png"
+  },
+  {
+    name: "Carapuce",
+    description: "Un Pokémon eau avec une carapace dure.",
+    pokemon_type: "Eau",
+    location: "Lac Colère",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png"
+  },
+  {
+    name: "Mewtwo",
+    description: "Un Pokémon légendaire créé en laboratoire.",
+    pokemon_type: "Psy",
+    location: "Grotte Azurée",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png"
+  },
+  {
+    name: "Dracaufeu",
+    description: "Un dragon de feu qui vole dans le ciel.",
+    pokemon_type: "Feu/Vol",
+    location: "Route Victoire",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png"
+  },
+  {
+    name: "Mew",
+    description: "Un Pokémon légendaire mystérieux aux pouvoirs variés.",
+    pokemon_type: "Psy",
+    location: "Glaziovie",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/151.png"
+  },
+  {
+    name: "Raichu",
+    description: "L'évolution de Pikachu, avec des pouvoirs électriques accrus.",
+    pokemon_type: "Électrique",
+    location: "Parc des Amis",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/026.png"
+  }
+
 ]
 
-# Find or create the user with the specified email
+# Création d'un utilisateur pour tester la génération de pokemons, ne pas oublié de faire pour Hadrien et Michel
 userTest = User.find_or_create_by(email: "cianci.dylan@gmail.com")
 
 # Create Pokémon records with associated images and user
