@@ -1,0 +1,21 @@
+<div id="<%= dom_id(@pokemon) %>" class="pokemon-show-container">
+  <div class="pokemon-image">
+    <%= cl_image_tag @pokemon.image, height: 300, width: 400, crop: :fill %>
+  </div>
+
+  <div class="pokemon-details">
+    <h2><%= @pokemon.name %></h2>
+    <p><strong>Description:</strong> <%= @pokemon.description %></p>
+    <p><strong>Pokemon type:</strong> <%= @pokemon.pokemon_type %></p>
+    <p><strong>Location:</strong> <%= @pokemon.location %></p>
+
+    <div class="button-group">
+      <div class="button-left">
+        <%= link_to "Back to Pokemons", pokemons_path, class: "btn btn-light" %>
+      </div>
+      <div class="button-right">
+        <%= link_to "Delete pokemon", pokemon_path(@pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "btn-delete btn btn-danger" %>
+      </div>
+    </div>
+  </div>
+</div>
