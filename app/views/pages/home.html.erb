@@ -1,2 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
+<div class="container">
+  <h1>Select a pokemon 💦🔥🌱</h1>
+  <p>Comming Soon</p>
+  <div>
+  <h2>Our Pokémons</h2>
+    <% if @pokemons.empty? %>
+      <p>No pokemon yet!</p>
+    <% else %>
+      <ul>
+        <% @pokemons.each do |pokemon| %>
+          <li> <%= pokemon.name %> </li>
+        <% end %>
+      </ul>
+    <% end %>
+  </div>
+</div>

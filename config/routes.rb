@@ -33,7 +33,4 @@ Rails.application.routes.draw do
   # post '/notification', to: 'bookings#send_notification'
 
   # ... (autres routes nécessaires)
-
-  # Route pour la page d'accueil (home)
-  get '/home', to: 'pages#home'
 end

@@ -3,6 +3,12 @@ class BookingsController < ApplicationController
     @bookings = current_user.bookings
   end
 
+  def new
+    @pokemon = Pokemon.find(params[:pokemon_id])
+    @booking = @pokemon.bookings.build
+  en
+  end
+
   def create
     @pokemon = Pokemon.find(params[:pokemon_id])
     @booking = @pokemon.bookings.build(booking_params)
@@ -10,7 +16,7 @@ class BookingsController < ApplicationController
     if @booking.save
       redirect_to @pokemon, notice: 'Booking was successfully created.'
     else
-      render @pokemon, alert: 'Booking could not be created.'
+      render new, alert: 'Booking could not be created.'
     end
   end
 
