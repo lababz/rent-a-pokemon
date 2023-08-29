@@ -6,6 +6,7 @@
 #   movies = Movie.create([{ name: "Star Wars" }, { name: "Lord of the Rings" }])
 #   Character.create(name: "Luke", movie: movies.first)
 require "faker"
+require "open-uri"
 
 puts "Cleaning database..."
 User.destroy_all
@@ -20,6 +21,8 @@ puts "Creating users..."
   )
 end
 
+file1 = URI.open("https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/8/89/Pikachu.jpg")
+
 puts "Creating pokemons..."
 
 pokemon_types = [
@@ -28,14 +31,16 @@ pokemon_types = [
   "Dragon", "Dark", "Steel", "Fairy"
 ]
 
-30.times do
-  Pokemon.create!(
-    name: Faker::Games::Pokemon.unique.name,
+10.times do
+  pokemon = Pokemon.new(
+    name: Faker::Creature::Pokemon.name,
     description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
     pokemon_type: pokemon_types.sample,
     location: Faker::Address.full_address,
-    user_id: User.all.sample.id
+    user: User.all.sample
   )
+  pokemon.photo.attach(io: file1, filename: "Pokem.png", content_type: "image/png")
+  pokemon.save
 end
 
-puts "Finished! 30 pokemons created!"
+puts "Finished! 10 pokemons created!"

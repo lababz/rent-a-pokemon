@@ -1,23 +1,20 @@
-<div id="<%= dom_id(@pokemon) %>" class="pokemon-show-container">
-  <div class="pokemon-image">
-    <% @pokemon.images.each do |image| %>
-    <%= cl_image_tag image.key, height: 300, width: 400, crop: :fill %>
-    <% end %>
-
-  </div>
-
-  <div class="pokemon-details">
-    <h2><%= @pokemon.name %></h2>
-    <p><strong>Description:</strong> <%= @pokemon.description %></p>
-    <p><strong>Pokemon type:</strong> <%= @pokemon.pokemon_type %></p>
-    <p><strong>Location:</strong> <%= @pokemon.location %></p>
-
-    <div class="button-group">
-      <div class="button-left">
-        <%= link_to "Back to Pokemons", pokemons_path, class: "btn btn-light" %>
-      </div>
-      <div class="button-right">
-        <%= link_to "Delete pokemon", pokemon_path(@pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "btn-delete btn btn-danger" %>
+<div class="container">
+  <div class="row justify-content-center align-items-center" style="min-height: 80vh;">
+    <div class="col-md-4">
+      <div id="<%= dom_id(@pokemon) %>" class="card shadow" style="width: 18rem;">
+        <div class="card-body">
+          <% @pokemon.images.each do |image| %>
+          <%= cl_image_tag image.key, crop: :fill, class: "card-img-top" %>
+          <% end %>
+          <h2 class="card-title text-center"><%= @pokemon.name %></h2>
+          <p class="card-text"><strong>Description:</strong> <%= @pokemon.description %></p>
+          <p class="card-text"><strong>Pokemon type:</strong> <%= @pokemon.pokemon_type %></p>
+          <p class="card-text"><strong>Location:</strong> <%= @pokemon.location %></p>
+          <div class="button-group d-flex justify-content-between">
+            <%= link_to "Back to Pokemons", pokemons_path, class: "btn btn-light" %>
+            <%= link_to "Delete pokemon", pokemon_path(@pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "btn-delete btn btn-danger" %>
+          </div>
+        </div>
       </div>
     </div>
   </div>
