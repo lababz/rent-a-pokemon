@@ -8,7 +8,6 @@ class BookingsController < ApplicationController
   def new
     @pokemon = Pokemon.find(params[:pokemon_id])
     @booking = @pokemon.bookings.build
-  en
   end
 
   # Crée une nouvelle réservation pour un Pokémon
