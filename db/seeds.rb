@@ -38,4 +38,4 @@ pokemon_types = [
   )
 end
 
-puts "Finished! 30 pokemons created!"
+puts "Finished! 10 users and 30 pokemons created!"
