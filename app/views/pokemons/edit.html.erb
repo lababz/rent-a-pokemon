@@ -1,0 +1,40 @@
+<div class="container">
+  <div class="row justify-content-center align-items-center pokemon-show-container">
+      <div class="col-md-4">
+        <div class="pokemon-card-body">
+        <%=form_with model: @pokemon do |f| %>
+          <div class="form-inputs">
+            <%= f.label :name, "Name" %>
+            <%= f.text_field :name, class: "form-control" %>
+          </div>
+          <div class="form-inputs">
+            <%= f.label :description, "Description" %>
+            <%= f.text_area :description, class: "form-control" %>
+          </div>
+          <div class="form-inputs">
+            <%= f.label :pokemon_type, "Pokemon Type" %>
+            <%= f.text_field :pokemon_type, class: "form-control" %>
+          </div>
+          <div class="form-inputs">
+            <%= f.label :location, "Location" %>
+            <%= f.text_field :location, class: "form-control" %>
+          </div>
+          <div class="form-inputs">
+            <%= f.label :price, "Price" %>
+            <%= f.text_field :price, class: "form-control" %>
+          </div>
+          <div class="form-inputs">
+            <%= f.label :images, "Images" %>
+            <%= f.file_field :images, class: "form-control" %>
+          </div>
+          <div class="form-actions text-center">
+            <%= f.submit "Update Pokemon", class: "btn btn-primary" %>
+          </div>
+        </div>
+      </div>
+  </div>
+</div>
+
+<div>
+  <%= link_to 'back to pokemons', pokemons_path %>
+</div>
