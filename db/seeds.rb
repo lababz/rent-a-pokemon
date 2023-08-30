@@ -21,25 +21,84 @@ puts "Creating users..."
   )
 end
 
+User.create( email: "cianci.dylan@gmail.com", password: "1234567", password_confirmation: "1234567")
+
 puts "Creating pokemons..."
 
-pokemon_types = [
-  "Normal", "Fire", "Water", "Grass", "Electric", "Ice", "Fighting",
-  "Poison", "Ground", "Flying", "Psychic", "Bug", "Rock", "Ghost",
-  "Dragon", "Dark", "Steel", "Fairy"
+pokemon_data = [
+  {
+    name: "Pikachu",
+    description: "Un petit Pokémon électrique avec des joues rouges.",
+    pokemon_type: "Électrique",
+    location: "Forêt de Jade",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
+  },
+  {
+    name: "Bulbizarre",
+    description: "Un Pokémon plante avec une plante sur son dos.",
+    pokemon_type: "Plante",
+    location: "Parc Safari",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/001.png"
+  },
+  {
+    name: "Salamèche",
+    description: "Un lézard de feu avec une flamme à la queue.",
+    pokemon_type: "Feu",
+    location: "Mont Sélénite",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/004.png"
+  },
+  {
+    name: "Carapuce",
+    description: "Un Pokémon eau avec une carapace dure.",
+    pokemon_type: "Eau",
+    location: "Lac Colère",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/007.png"
+  },
+  {
+    name: "Mewtwo",
+    description: "Un Pokémon légendaire créé en laboratoire.",
+    pokemon_type: "Psy",
+    location: "Grotte Azurée",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/150.png"
+  },
+  {
+    name: "Dracaufeu",
+    description: "Un dragon de feu qui vole dans le ciel.",
+    pokemon_type: "Feu/Vol",
+    location: "Route Victoire",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/006.png"
+  },
+  {
+    name: "Mew",
+    description: "Un Pokémon légendaire mystérieux aux pouvoirs variés.",
+    pokemon_type: "Psy",
+    location: "Glaziovie",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/151.png"
+  },
+  {
+    name: "Raichu",
+    description: "L'évolution de Pikachu, avec des pouvoirs électriques accrus.",
+    pokemon_type: "Électrique",
+    location: "Parc des Amis",
+    image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/026.png"
+  }
+
 ]
 
-file1 = URI.open("https://oyster.ignimgs.com/mediawiki/apis.ign.com/pokemon-blue-version/8/89/Pikachu.jpg")
+# Création d'un utilisateur pour tester la génération de pokemons, ne pas oublié de faire pour Hadrien et Michel
+userTest = User.find_or_create_by(email: "cianci.dylan@gmail.com")
 
-10.times do
+# Create Pokémon records with associated images and user
+pokemon_data.each do |data|
+  file = URI.open(data[:image_url])
   pokemon = Pokemon.new(
-    name: Faker::Games::Pokemon.name,
-    description: Faker::Lorem.paragraph(sentence_count: 2, supplemental: false, random_sentences_to_add: 4),
-    pokemon_type: pokemon_types.sample,
-    location: Faker::Address.full_address,
-    user: User.all.sample
+    name: data[:name],
+    description: data[:description],
+    pokemon_type: data[:pokemon_type],
+    location: data[:location],
+    user: userTest
   )
-  pokemon.photo.attach(io: file1, filename: "Pokem.png", content_type: "image/png")
+  pokemon.images.attach(io: file, filename: "pokemon_image.png", content_type: "image/png")
   pokemon.save
 end
 
