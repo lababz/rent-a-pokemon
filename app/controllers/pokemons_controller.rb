@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
   # # Affiche la liste des Pokémon
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Pokemon.where(user: current_user)
   end
 
   # Affiche les détails d'un Pokémon
