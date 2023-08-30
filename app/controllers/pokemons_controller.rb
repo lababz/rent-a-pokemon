@@ -39,13 +39,12 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.find(params[:id])
 
     if params[:pokemon][:images].present?
-      @pokemon.images.purge
-
-      @pokemon.images.attach(params[:pokemon][:images])
+      @pokemon.images.purge  # Supprime l'image existante (Active Storage)
+      @pokemon.images.attach(params[:pokemon][:images])  # Attache le nouveau fichier
     end
 
-    if @pokemon.update(pokemon_params)
-      redirect_to @pokemon, notice: 'Pokemon was successfully updated.'
+    if @pokemon.update(pokemon_params.except(:images))  # Exclut le champ d'image de la mise à jour
+      redirect_to @pokemon, notice: 'Pokemon a été mis à jour avec succès.'
     else
       render :edit
     end
