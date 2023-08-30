@@ -9,16 +9,17 @@ Rails.application.routes.draw do
   # delete '/deconnexion', to: 'sessions#destroy'
 
   # Routes pour la gestion des pokémons (appartements)
-  resources :pokemons, only: [:index, :show, :new, :create, :destroy]
+  resources :pokemons
 
   # Routes pour la gestion des réservations
   resources :bookings, only: [:index, :destroy]
+
   resources :pokemons, only: [] do
-    resources :bookings, only: [:new, :create]
+    resources :bookings, only: [:new, :create, :destroy]
   end
 
   # Routes pour la gestion des avis
-  resources :pokemons, only: [] do
+  resources :bookings, only: [] do
     resources :reviews, only: [:create]
   end
 

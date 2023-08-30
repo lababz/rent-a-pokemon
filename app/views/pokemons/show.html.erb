@@ -10,8 +10,10 @@
           <p class="pokemon-card-text"><strong>Description:</strong> <%= @pokemon.description %></p>
           <p class="pokemon-card-text"><strong>Pokemon type:</strong> <%= @pokemon.pokemon_type %></p>
           <p class="pokemon-card-text"><strong>Location:</strong> <%= @pokemon.location %></p>
+          <p class="pokemon-card-text"><strong>Price:</strong> <%= @pokemon.price %></p>
           <div class="pokemon-button-group d-flex justify-content-between">
             <%= link_to "Back to Pokemons", pokemons_path, class: "pokemon-btn btn btn-light" %>
+            <%= link_to "Edit Pokemon", edit_pokemon_path(@pokemon), class: "pokemon-btn btn btn-yellow" %>
             <%= link_to "Delete pokemon", pokemon_path(@pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "pokemon-btn-delete btn btn-danger" %>
           </div>
         </div>

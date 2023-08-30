@@ -31,10 +31,29 @@ class PokemonsController < ApplicationController
     redirect_to pokemons_path
   end
 
+  def edit
+    @pokemon = Pokemon.find(params[:id])
+  end
+
+  def update
+    @pokemon = Pokemon.find(params[:id])
+
+    if params[:pokemon][:images].present?
+      @pokemon.images.purge  # Supprime l'image existante (Active Storage)
+      @pokemon.images.attach(params[:pokemon][:images])  # Attache le nouveau fichier
+    end
+
+    if @pokemon.update(pokemon_params.except(:images))  # Exclut le champ d'image de la mise à jour
+      redirect_to @pokemon, notice: 'Pokemon a été mis à jour avec succès.'
+    else
+      render :edit
+    end
+  end
+
   private
 
   # Définit les paramètres autorisés pour le Pokémon
   def pokemon_params
-    params.require(:pokemon).permit(:name, :description, :pokemon_type, :location, images: [])
+    params.require(:pokemon).permit(:name, :description, :pokemon_type, :location, :price, images: [])
   end
 end

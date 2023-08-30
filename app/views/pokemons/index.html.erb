@@ -4,20 +4,20 @@
     <% if @pokemons.empty? %>
       <p class="text-center">No pokemon yet!</p>
     <% else %>
-      <!-- Cards -->
-      <div class="row justify-content-center align-items-center pokemon-show-container">
-        <div class="col-md-4">
-            <% @pokemons.each do |pokemon| %>
-                <div class="pokemon-card pokemon-card-shadow" data-aos="zoom-in">
-                  <div class="pokemon-card-body">
-                    <%= image_tag pokemon.images.first, class: "pokemon-card-img" %>
-                    <div class="pokemon-card-body text-center">
-                      <%= link_to pokemon[:name], pokemon_path(pokemon[:id]), class: "pokemon-card-title" %>
-                    </div>
-                  </div>
+      <!-- Pokemon Grid -->
+      <div class="row justify-content-center">
+        <% @pokemons.each do |pokemon| %>
+          <div class="col-md-4 col-sm-6 mb-4">
+            <div class="pokemon-card pokemon-card-shadow" data-aos="zoom-in">
+              <div class="pokemon-card-body">
+                <%= image_tag pokemon.images.first, class: "pokemon-card-img" %>
+                <div class="pokemon-card-body text-center">
+                  <%= link_to pokemon[:name], pokemon_path(pokemon[:id]), class: "pokemon-card-title" %>
                 </div>
-            <% end %>
-        </div>
+              </div>
+            </div>
+          </div>
+        <% end %>
       </div>
     <% end %>
   </div>
