@@ -1,0 +1,24 @@
+<h1>Reviews</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Pokemon</th>
+      <th>Rating</th>
+      <th>Comment</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @reviews.each do |review| %>
+      <tr>
+        <td><%= review.pokemon.name %></td>
+        <td><%= review.rating %></td>
+        <td><%= review.comment %></td>
+        <td><%= link_to 'Show', review %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'New Review', new_review_path %>

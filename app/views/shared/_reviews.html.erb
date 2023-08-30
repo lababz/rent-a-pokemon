@@ -1,0 +1,13 @@
+<h2>Reviews</h2>
+<% if @reviews.any? %>
+  <ul>
+    <% @reviews.each do |review| %>
+      <li>
+        <p>Rating: <%= review.rating %></p>
+        <p>Comment: <%= review.comment %></p>
+      </li>
+    <% end %>
+  </ul>
+<% else %>
+  <p>No reviews for this booking.</p>
+<% end %>

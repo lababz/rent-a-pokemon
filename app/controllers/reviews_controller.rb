@@ -1,4 +1,9 @@
 class ReviewsController < ApplicationController
+
+  def index
+    @reviews = Review.all
+  end
+  
   # Crée une nouvelle review pour un booking
   def create
     @pokemon = Pokemon.find(params[:pokemon_id])
