@@ -31,10 +31,24 @@ class PokemonsController < ApplicationController
     redirect_to pokemons_path
   end
 
+  def edit
+    @pokemon = Pokemon.find(params[:id])
+  end
+
   def update
     @pokemon = Pokemon.find(params[:id])
-    @pokemon.update(pokemon_params)
-    redirect_to pokemon_path(@pokemon)
+
+    if params[:pokemon][:images].present?
+      @pokemon.images.purge
+
+      @pokemon.images.attach(params[:pokemon][:images])
+    end
+
+    if @pokemon.update(pokemon_params)
+      redirect_to @pokemon, notice: 'Pokemon was successfully updated.'
+    else
+      render :edit
+    end
   end
 
   private
