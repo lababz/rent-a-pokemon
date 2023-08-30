@@ -1,132 +1,31 @@
 <div class="container">
-  <h1>My poké-bookings</h1>
+  <h1>Mes reservations</h1>
   <div class="container-booking d-flex">
     <!-- Contenaire cards -->
     <div class="cards-booking">
+    <% @bookings.each do |booking| %>
       <!-- Card template -->
       <div class="card-booking">
         <!-- Cover image to change with image helper -->
         <%= image_tag cl_image_path("poke-booking-cover"), alt: "poke-booking-default-image", class: "card-cover" %>
         <div class="card-body p-4">
           <!-- Infos sur les pokémons -->
-          <h5><a href="#" class="card-title mb-2">Insert pokemon name</a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-          <p class="card-text mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit, neque id venenatis bibendum, lectus est tincidunt nisl, id cursus quam massa eu justo. Sed id elit vel purus sodales fermentum.</p>
+          <h5><a href="#" class="card-title mb-2"><%= booking.pokemon.name %></a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
+          <p class="card-text mb-4"><%= booking.pokemon.description %></p>
           <!-- Contenaire flex pour les infos booking + boutton delete booking -->
           <div class="card-footer">
             <!-- Propriétaire + dates -->
             <div class="booking-details">
-              <div><i class="fa-solid fa-person"></i> Owner's name</div>
-              <div><i class="fa-solid fa-calendar-days"></i> From start_end to end_date</div>
-              <div><i class="fa-solid fa-clock"></i> Duration (days)</div>
+              <div><i class="fa-solid fa-person"></i> <%= booking.pokemon.user.email %></div>
+              <div><i class="fa-solid fa-calendar-days"></i> From <%= booking.start_date %> to <%= booking.end_date %></div>
+              <div><i class="fa-solid fa-clock"></i> <%= duration_in_days(booking.start_date, booking.end_date) %> days</div>
             </div>
             <!-- Button delete -->
             <a href="" class="text-danger">delete</a>
           </div>
         </div>
       </div>
-
-      <!-- Cartes à supprimer -->
-      <div class="card-booking">
-        <!-- Cover image to change with image helper -->
-        <%= image_tag cl_image_path("poke-booking-cover"), alt: "poke-booking-default-image", class: "card-cover" %>
-        <div class="card-body p-4">
-          <!-- Infos sur les pokémons -->
-          <h5><a href="#" class="card-title mb-2">Insert pokemon name</a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-          <p class="card-text mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit, neque id venenatis bibendum, lectus est tincidunt nisl, id cursus quam massa eu justo. Sed id elit vel purus sodales fermentum.</p>
-          <!-- Contenaire flex pour les infos booking + boutton delete booking -->
-          <div class="card-footer">
-            <!-- Propriétaire + dates -->
-            <div class="booking-details">
-              <div><i class="fa-solid fa-person"></i> Owner's name</div>
-              <div><i class="fa-solid fa-calendar-days"></i> From start_end to end_date</div>
-              <div><i class="fa-solid fa-clock"></i> Duration (days)</div>
-            </div>
-            <!-- Button delete -->
-            <a href="" class="text-danger">delete</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-booking">
-        <!-- Cover image to change with image helper -->
-        <%= image_tag cl_image_path("poke-booking-cover"), alt: "poke-booking-default-image", class: "card-cover" %>
-        <div class="card-body p-4">
-          <!-- Infos sur les pokémons -->
-          <h5><a href="#" class="card-title mb-2">Insert pokemon name</a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-          <p class="card-text mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit, neque id venenatis bibendum, lectus est tincidunt nisl, id cursus quam massa eu justo. Sed id elit vel purus sodales fermentum.</p>
-          <!-- Contenaire flex pour les infos booking + boutton delete booking -->
-          <div class="card-footer">
-            <!-- Propriétaire + dates -->
-            <div class="booking-details">
-              <div><i class="fa-solid fa-person"></i> Owner's name</div>
-              <div><i class="fa-solid fa-calendar-days"></i> From start_end to end_date</div>
-              <div><i class="fa-solid fa-clock"></i> Duration (days)</div>
-            </div>
-            <!-- Button delete -->
-            <a href="" class="text-danger">delete</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-booking">
-        <!-- Cover image to change with image helper -->
-        <%= image_tag cl_image_path("poke-booking-cover"), alt: "poke-booking-default-image", class: "card-cover" %>
-        <div class="card-body p-4">
-          <!-- Infos sur les pokémons -->
-          <h5><a href="#" class="card-title mb-2">Insert pokemon name</a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-          <p class="card-text mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit, neque id venenatis bibendum, lectus est tincidunt nisl, id cursus quam massa eu justo. Sed id elit vel purus sodales fermentum.</p>
-          <!-- Contenaire flex pour les infos booking + boutton delete booking -->
-          <div class="card-footer">
-            <!-- Propriétaire + dates -->
-            <div class="booking-details">
-              <div><i class="fa-solid fa-person"></i> Owner's name</div>
-              <div><i class="fa-solid fa-calendar-days"></i> From start_end to end_date</div>
-              <div><i class="fa-solid fa-clock"></i> Duration (days)</div>
-            </div>
-            <!-- Button delete -->
-            <a href="" class="text-danger">delete</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-booking">
-        <!-- Cover image to change with image helper -->
-        <%= image_tag cl_image_path("poke-booking-cover"), alt: "poke-booking-default-image", class: "card-cover" %>
-        <div class="card-body p-4">
-          <!-- Infos sur les pokémons -->
-          <h5><a href="#" class="card-title mb-2">Insert pokemon name</a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-          <p class="card-text mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit, neque id venenatis bibendum, lectus est tincidunt nisl, id cursus quam massa eu justo. Sed id elit vel purus sodales fermentum.</p>
-          <!-- Contenaire flex pour les infos booking + boutton delete booking -->
-          <div class="card-footer">
-            <!-- Propriétaire + dates -->
-            <div class="booking-details">
-              <div><i class="fa-solid fa-person"></i> Owner's name</div>
-              <div><i class="fa-solid fa-calendar-days"></i> From start_end to end_date</div>
-              <div><i class="fa-solid fa-clock"></i> Duration (days)</div>
-            </div>
-            <!-- Button delete -->
-            <a href="" class="text-danger">delete</a>
-          </div>
-        </div>
-      </div>
-      <div class="card-booking">
-        <!-- Cover image to change with image helper -->
-        <%= image_tag cl_image_path("poke-booking-cover"), alt: "poke-booking-default-image", class: "card-cover" %>
-        <div class="card-body p-4">
-          <!-- Infos sur les pokémons -->
-          <h5><a href="#" class="card-title mb-2">Insert pokemon name</a> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
-          <p class="card-text mb-4">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nullam hendrerit, neque id venenatis bibendum, lectus est tincidunt nisl, id cursus quam massa eu justo. Sed id elit vel purus sodales fermentum.</p>
-          <!-- Contenaire flex pour les infos booking + boutton delete booking -->
-          <div class="card-footer">
-            <!-- Propriétaire + dates -->
-            <div class="booking-details">
-              <div><i class="fa-solid fa-person"></i> Owner's name</div>
-              <div><i class="fa-solid fa-calendar-days"></i> From start_end to end_date</div>
-              <div><i class="fa-solid fa-clock"></i> Duration (days)</div>
-            </div>
-            <!-- Button delete -->
-            <a href="" class="text-danger">delete</a>
-          </div>
-        </div>
-      </div>
-    <!-- fin des cartes à supprimer -->
+    <% end %>
     </div>
   </div>
 </div>

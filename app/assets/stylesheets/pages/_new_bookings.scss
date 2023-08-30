@@ -1,0 +1,53 @@
+.booking-container {
+  display: flex;
+
+  .pokemon-images {
+    width: 300px;
+    // background-size: cover;
+    // background-position: center;
+  }
+
+  .booking-main {
+    display: flex;
+    flex-direction: column;
+    padding: 20px;
+    flex-grow: 1;
+    background-color: $white;
+
+    .input-group-booking {
+      display: flex;
+      align-items: center;
+
+      * {
+        margin-right: 20px;
+
+        &:last-child {
+          margin-right: 0;
+        }
+      }
+    }
+
+    .btn-booking {
+      display: inline-block;
+      padding: 10px 20px;
+      border: none;
+      border-radius: 4px;
+      background-color: #e74c3c;
+      color: #fff;
+      font-size: 16px;
+      cursor: pointer;
+      transition: background-color 0.3s, color 0.3s;
+
+      &:hover {
+        background-color: #c0392b;
+        color: #fff;
+      }
+    }
+
+    .booking-price {
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid $light-gray;
+    }
+  }
+}

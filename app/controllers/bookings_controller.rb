@@ -16,7 +16,7 @@ class BookingsController < ApplicationController
     @booking = @pokemon.bookings.build(booking_params)
     @booking.user = current_user
     if @booking.save
-      redirect_to @pokemon, notice: 'Booking was successfully created.'
+      redirect_to bookings_path, notice: 'Booking was successfully created.'
     else
       render :new, alert: 'Booking could not be created.'
     end
