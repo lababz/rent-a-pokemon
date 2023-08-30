@@ -7,7 +7,6 @@ class Booking < ApplicationRecord
   # validations
   validates :start_date, presence: true
   validates :end_date, presence: true
-  validates :price, presence: true, numericality: { only_integer: false, greater_than_or_equal_to: 0 }
   validate :end_date_after_start_date?
 
   private
