@@ -12,5 +12,5 @@ class Pokemon < ApplicationRecord
   validates :location, presence: true
   validates :price, presence: true, numericality: { only_integer: false, greater_than: 0 }
 
-  TYPES = ['Normal', 'Fire', 'Water', 'Grass', 'Electric', 'Ice', 'Fighting', 'Poison', 'Ground', 'Flying', 'Psychic', 'Bug', 'Rock', 'Ghost', 'Dark', 'Steel', 'Fairy']
+  TYPES = ['Normal', 'Feu', 'Eau', 'Plante', 'Electrique', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Ténèbres', 'Acier', 'Fée']
 end

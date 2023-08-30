@@ -96,6 +96,7 @@ pokemon_data.each do |data|
     description: data[:description],
     pokemon_type: data[:pokemon_type],
     location: data[:location],
+    price: rand(1..100),
     user: userTest
   )
   pokemon.images.attach(io: file, filename: "pokemon_image.png", content_type: "image/png")
