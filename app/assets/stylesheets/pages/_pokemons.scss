@@ -1,0 +1,64 @@
+// le conteneur des cartes pokemon
+.pokemon-show-container {
+  min-height: 80vh;
+}
+
+// la carte pokemon
+.pokemon-card {
+  border-radius: 1px;
+  position: relative;
+}
+
+// contenu des cartes pokemons
+.pokemon-card-body {
+  padding: 1rem;
+  text-align: center;
+}
+
+// image des cartes pokemons
+.pokemon-card-img {
+  height: 200px;
+}
+
+// titre des cartes pokemons
+.pokemon-card-title {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+  color: black;
+  text-decoration: none;
+}
+
+.pokemon-card-title:hover {
+  color: red;
+}
+
+// texte des cartes pokemons
+.pokemon-card-text {
+  font-size: 1rem;
+  margin-bottom: 0.5rem;
+}
+
+// organisation des boutons
+.pokemon-button-group {
+  display: flex;
+  justify-content: space-between;
+}
+
+// button lier au pokemon
+.pokemon-btn {
+  color: gray;
+  text-decoration: none;
+}
+
+.pokemon-btn:hover {
+  color: $light-gray;
+}
+
+.pokemon-btn-delete {
+  margin-left: auto;
+}
+
+// ombrage
+.pokemon-card-shadow {
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
