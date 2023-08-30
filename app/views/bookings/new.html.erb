@@ -1,25 +1,33 @@
 <div class="container mb-5">
-  <h1>Book <%= @pokemon.name %></h1>
-  <div class="pokemon-details">
+  <div class="booking-container mb-5">
     <% @pokemon.images.each do |image| %>
-      <%= cl_image_tag image.key, crop: :fill, class: "card-img-top" %>
+      <%= cl_image_tag image.key, crop: :fill, class: "pokemon-images" %>
     <% end %>
-    <p class="card-text"><strong>Description:</strong> <%= @pokemon.description %></p>
-    <p class="card-text"><strong>Pokemon type:</strong> <%= @pokemon.pokemon_type %></p>
-    <p class="card-text"><strong>Location:</strong> <%= @pokemon.location %></p>
-  </div>
-  <%= simple_form_for [@pokemon, @booking], data: { controller: "price" } do |f| %>
-    <div class="form-group">
-      <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker", target: "price.startDate", action: "input->price#updateTotalPrice" } } %>
-    </div>
-    <div class="form-group">
-      <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker", target: "price.endDate", action: "input->price#updateTotalPrice" } } %>
-    </div>
 
-    <div class="form-group price">
-      Price per day: <span id="pricePerDay"><%= @pokemon.price %></span>€
-      Total price: <span id="total-price" data-price-target="totalPrice"></span>
+
+    <div class="card booking-main">
+
+      <div class="pokemon-details">
+        <h1>Book <%= @pokemon.name %></h1>
+        <h3><strong>Type:</strong> <%= @pokemon.pokemon_type %></h3>
+        <p>ℹ️ <%= @pokemon.description %></p>
+        <p>📍 <%= @pokemon.location %></p>
+      </div>
+
+      <%= simple_form_for [@pokemon, @booking], data: { controller: "price" } do |f| %>
+        <div class="booking-details">
+          <div class="input-group-booking">
+            <%= f.input :start_date, as: :string, input_html: { data: { controller: "datepicker", target: "price.startDate", action: "input->price#updateTotalPrice" } } %>
+            <%= f.input :end_date, as: :string, input_html: { data: { controller: "datepicker", target: "price.endDate", action: "input->price#updateTotalPrice" } } %>
+          </div>
+        <%= f.submit "Reserver", class: "btn-booking" %>
+        </div>
+
+        <div class="booking-price">
+          <p>Price per day: <span id="pricePerDay"><%= @pokemon.price %></span>€
+          <br><strong>Total price: <span id="total-price" data-price-target="totalPrice"></span></strong></p>
+        </div>
+      <% end %>
     </div>
-    <%= f.submit "Submit", class: "btn btn-primary" %>
-  <% end %>
+  </div>
 </div>

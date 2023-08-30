@@ -25,7 +25,7 @@
     <div class="cards-container">
       <div class="cards-hp">
         <% @pokemons.each do |pokemon| %>
-          <div class="card-hp" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= image_url('https://imgs.search.brave.com/wTLJH0OpadlxectcTPyXJGlFYHBumnpynZLFpqJSj3Y/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzJlLzdm/L2Y0LzJlN2ZmNDc5/MGMwYTliMDBiNGM4/ZGY1MWNmNTkzZDFk/LmpwZw') %>')"><%= link_to "", pokemon_path(pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "fa-solid fa-xmark" %><%= link_to pokemon[:name], pokemon_path(pokemon[:id]) %></div>
+          <div class="card-hp" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= image_url('https://imgs.search.brave.com/wTLJH0OpadlxectcTPyXJGlFYHBumnpynZLFpqJSj3Y/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzJlLzdm/L2Y0LzJlN2ZmNDc5/MGMwYTliMDBiNGM4/ZGY1MWNmNTkzZDFk/LmpwZw') %>')"><%= link_to "", new_pokemon_booking_path(pokemon[:id]), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "fa-solid fa-xmark" %><%= link_to pokemon[:name], new_pokemon_booking_path(pokemon) %></div>
         <% end %>
       </div>
     </div>
