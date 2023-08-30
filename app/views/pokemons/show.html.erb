@@ -1,21 +1,38 @@
 <div class="container">
   <div class="row justify-content-center align-items-center pokemon-show-container">
-    <div class="col-md-4">
-      <div id="<%= dom_id(@pokemon) %>" class="pokemon-card pokemon-card-shadow">
-        <div class="pokemon-card-body">
-          <% @pokemon.images.each do |image| %>
-            <%= cl_image_tag image.key, crop: :fill, class: "pokemon-card-img" %>
+    <div class="col-md-4 pokemon-card pokemon-card-shadow">
+      <div id="carouselShowPokemon" class="carousel slide">
+      <div class="pokemon-card-body">
+        <div class="carousel-inner">
+          <% @pokemon.images.each_with_index do |image, index| %>
+              <div class="carousel-item <%= index == 0 ? 'active' : '' %>">
+                <%= cl_image_tag image.key, crop: :fill, class: "pokemon-card-img" %>
+                  <button class="carousel-control-prev" type="button" data-bs-target="#carouselShowPokemon" data-bs-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="visually-hidden">Previous</span>
+                  </button>
+                  <button class="carousel-control-next" type="button" data-bs-target="#carouselShowPokemon" data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                  </button>
+              </div>
           <% end %>
-          <h2 class="pokemon-card-title text-center"><%= @pokemon.name %></h2>
-          <p class="pokemon-card-text"><strong>Description:</strong> <%= @pokemon.description %></p>
-          <p class="pokemon-card-text"><strong>Pokemon type:</strong> <%= @pokemon.pokemon_type %></p>
-          <p class="pokemon-card-text"><strong>Location:</strong> <%= @pokemon.location %></p>
-          <p class="pokemon-card-text"><strong>Price:</strong> <%= @pokemon.price %></p>
-          <div class="pokemon-button-group d-flex justify-content-between">
-            <%= link_to "Back to Pokemons", pokemons_path, class: "pokemon-btn btn btn-light" %>
-            <%= link_to "Edit Pokemon", edit_pokemon_path(@pokemon), class: "pokemon-btn btn btn-yellow" %>
-            <%= link_to "Delete pokemon", pokemon_path(@pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "pokemon-btn-delete btn btn-danger" %>
-          </div>
+        </div>
+
+        </div>
+          <div class="pokemon-card">
+            <div class="pokemon-card-body">
+              <h2 class="pokemon-card-title text-center"><%= @pokemon.name %></h2>
+              <p class="pokemon-card-text text-start"><strong>Description:</strong> <br> <%= @pokemon.description %></p>
+              <p class="pokemon-card-text text-start"><strong>Pokemon type:</strong> <br> <%= @pokemon.pokemon_type %></p>
+              <p class="pokemon-card-text text-start"><strong>Location:</strong> <br> <%= @pokemon.location %></p>
+              <p class="pokemon-card-text text-start"><strong>Price:</strong> <br> <%= @pokemon.price %></p>
+              <div class="pokemon-button-group d-flex justify-content-between">
+                <%= link_to "Back to Pokemons", pokemons_path, class: "pokemon-btn btn btn-light" %>
+                <%= link_to "Edit Pokemon", edit_pokemon_path(@pokemon), class: "pokemon-btn btn btn-yellow" %>
+                <%= link_to "Delete pokemon", pokemon_path(@pokemon), data: { turbo_method: :delete, turbo_confirm: "Are you sure you want to delete this list?" }, class: "pokemon-btn-delete btn btn-danger" %>
+              </div>
+            </div>
         </div>
       </div>
     </div>
