@@ -1,7 +1,7 @@
 class PokemonsController < ApplicationController
   # # Affiche la liste des Pokémon
   def index
-    @pokemons = Pokemon.all
+    @pokemons = Pokemon.where(user: current_user)
   end
 
   # Affiche les détails d'un Pokémon
@@ -39,7 +39,7 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.find(params[:id])
 
     if params[:pokemon][:images].present?
-      @pokemon.images.purge  # Supprime l'image existante (Active Storage)
+      # @pokemon.images.purge  # Supprime l'image existante (Active Storage)
       @pokemon.images.attach(params[:pokemon][:images])  # Attache le nouveau fichier
     end
 

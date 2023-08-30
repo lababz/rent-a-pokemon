@@ -7,7 +7,7 @@
         <div class="form-inputs">
           <%= f.input :name, label: 'Name' %>
           <%= f.input :description, label: 'Description' %>
-          <%= f.input :pokemon_type, label: 'Pokemon Type' %>
+          <%= f.collection_select :pokemon_type, Pokemon::TYPES, :to_s, :humanize, { include_blank: 'Select Type' }, { label: 'Pokemon Type', class: 'pokemon-custom-select' } %>
           <%= f.input :location, label: 'Location' %>
           <%= f.input :price, label: 'Price' %>
           <%= f.input :images, as: :file, label: 'Images', input_html: { multiple: true } %>
