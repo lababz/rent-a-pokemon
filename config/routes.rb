@@ -20,7 +20,7 @@ Rails.application.routes.draw do
 
   # Routes pour la gestion des avis
   resources :bookings, only: [] do
-    resources :reviews, only: [:create]
+    resources :reviews, only: [:new, :create]
   end
 
   # Routes pour la gestion des photos
