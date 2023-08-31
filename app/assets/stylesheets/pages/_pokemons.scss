@@ -68,3 +68,26 @@
 .pokemon-card-shadow {
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
 }
+
+.pokemon-custom-select {
+  /* Ajoutez ici vos styles personnalisés pour la liste déroulante */
+  background-color: #f5f5f5;
+  border: 1px solid #ccc;
+  padding: 8px;
+  border-radius: 4px;
+  width: 100%;
+}
+
+.pokemon-custom-select option {
+  background-color: #fff;
+  color: #333;
+  padding: 4px;
+}
+
+.pokemon-btn-right {
+  justify-content: flex-end;
+}
+
+#btnAdd {
+  margin-right: 11px!important;
+}

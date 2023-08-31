@@ -26,7 +26,7 @@
               <p class="pokemon-card-text text-start"><strong>Description:</strong> <br> <%= @pokemon.description %></p>
               <p class="pokemon-card-text text-start"><strong>Pokemon type:</strong> <br> <%= @pokemon.pokemon_type %></p>
               <p class="pokemon-card-text text-start"><strong>Location:</strong> <br> <%= @pokemon.location %></p>
-              <p class="pokemon-card-text text-start"><strong>Price:</strong> <br> <%= @pokemon.price %></p>
+              <p class="pokemon-card-text text-start"><strong>Price:</strong> <br> <%= @pokemon.price %> €</p>
               <div class="pokemon-button-group d-flex justify-content-between">
                 <%= link_to "Back to Pokemons", pokemons_path, class: "pokemon-btn btn btn-light" %>
                 <%= link_to "Edit Pokemon", edit_pokemon_path(@pokemon), class: "pokemon-btn btn btn-yellow" %>
@@ -39,8 +39,12 @@
   </div>
 </div>
 
+<div class="container">
+  <% @reviews.each do |review| %>
+    <div class="card">
+      <%= review.rating %>
+      <%= review.comment %>
+    </div>
+    <% end %>
+</div>
 
-<% @reviews.each do |review| %>
-  <%= review.rating %>
-  <%= review.comment %>
-<% end %>

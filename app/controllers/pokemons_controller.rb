@@ -21,7 +21,7 @@ class PokemonsController < ApplicationController
     @pokemon = Pokemon.new(pokemon_params)
     @pokemon.user = current_user
     if @pokemon.save
-      redirect_to @pokemon, notice: 'Pokemon was successfully created.'
+      redirect_to @pokemon
     else
       render :new, status: :unprocessable_entity
     end
