@@ -39,8 +39,11 @@
   </div>
 </div>
 
-
-<% @reviews.each do |review| %>
-  <%= review.rating %>
-  <%= review.comment %>
-<% end %>
+<div class="container">
+  <% @reviews.each do |review| %>
+    <div class="card">
+      <%= review.rating %>
+      <%= review.comment %>
+    </div>
+    <% end %>
+</div>
