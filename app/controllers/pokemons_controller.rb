@@ -46,7 +46,7 @@ class PokemonsController < ApplicationController
     end
 
     if @pokemon.update(pokemon_update_params)
-      redirect_to @pokemon, notice: 'Pokemon a été mis à jour avec succès.'
+      redirect_to @pokemon
     else
       render :edit
     end

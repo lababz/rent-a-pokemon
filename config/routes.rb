@@ -23,6 +23,8 @@ Rails.application.routes.draw do
     resources :reviews, only: [:new, :create]
   end
 
+  resources :reviews, only: [:index]
+  
   # Routes pour la gestion des photos
   resources :photos, only: [:create, :destroy]
 
