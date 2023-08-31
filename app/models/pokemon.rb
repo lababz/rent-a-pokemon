@@ -1,4 +1,7 @@
 class Pokemon < ApplicationRecord
+  # constants
+  TYPES = ['Normal', 'Feu', 'Eau', 'Plante', 'Electrique', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Ténèbres', 'Acier', 'Fée']
+
   # associations
   belongs_to :user
   has_many :bookings, dependent: :destroy
@@ -12,5 +15,7 @@ class Pokemon < ApplicationRecord
   validates :location, presence: true
   validates :price, presence: true, numericality: { only_integer: false, greater_than: 0 }
 
-  TYPES = ['Normal', 'Feu', 'Eau', 'Plante', 'Electrique', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Ténèbres', 'Acier', 'Fée']
+  # geocoding
+  geocoded_by :location
+  after_validation :geocode, if: :will_save_change_to_location?
 end

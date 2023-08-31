@@ -30,7 +30,7 @@ pokemon_data = [
     name: "Pikachu",
     description: "Un petit Pokémon électrique avec des joues rouges.",
     pokemon_type: "Électrique",
-    location: "Forêt de Jade",
+    location: "Paris",
     image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
   },
   {

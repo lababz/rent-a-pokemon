@@ -8,6 +8,12 @@ class BookingsController < ApplicationController
   def new
     @pokemon = Pokemon.find(params[:pokemon_id])
     @booking = @pokemon.bookings.build
+    @markers = [@pokemon].map do |pokemon|
+      {
+        lat: pokemon.latitude,
+        lng: pokemon.longitude
+      }
+    end
   end
 
   # Crée une nouvelle réservation pour un Pokémon
