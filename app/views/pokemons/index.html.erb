@@ -1,8 +1,16 @@
+
+  <h1 class="text-center mt-5">Mes Pokémon💦🔥🌱</h1>
+
 <div class="container">
-  <h1 class="text-center mt-5">All your Pokemons in Pokedex💦🔥🌱</h1>
+  <div class="row g-0 text-end">
+    <div class="col-sm-6 col-md-8"></div>
+    <div class="col-6 col-md-4 justify-content-right">
+      <%= link_to 'Ajouter un Pokemon', new_pokemon_path, class: "btn btn-danger" %>
+    </div>
+  </div>
   <div class="row justify-content-center mt-5">
     <% if @pokemons.empty? %>
-      <p class="text-center">No pokemon yet!</p>
+      <p class="text-center">Vous n'avez pas encore de Pokémon !</p>
     <% else %>
       <!-- Pokemon Grid -->
       <div class="row justify-content-center">
