@@ -103,4 +103,20 @@ pokemon_data.each do |data|
   pokemon.save
 end
 
+puts "Creating booking"
+Booking.create!(
+  start_date: Date.today,
+  end_date: Date.today + 10,
+  user_id: userTest.id,
+  pokemon_id: Pokemon.first.id
+)
+
+puts "Creating review"
+Review.create!(
+  rating: rand(1..5),
+  comment: "Wow super génial ce commentaire",
+  booking_id: Booking.first.id,
+  user_id: userTest.id
+)
+
 puts "Finished! 10 users and 30 pokemons created!"
