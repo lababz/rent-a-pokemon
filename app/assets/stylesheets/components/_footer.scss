@@ -1,5 +1,13 @@
 .footer {
+  height: 51px;
   background-color: $gray;
   color: $light-gray;
   text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.wrapper {
+  min-height: 96vh;
 }
