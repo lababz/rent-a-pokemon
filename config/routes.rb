@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   resources :pokemons
 
   # Routes pour la gestion des réservations
-  resources :bookings, only: [:index, :destroy]
+  resources :bookings, only: [:index, :show, :destroy]
 
   resources :pokemons, only: [] do
     resources :bookings, only: [:new, :create, :destroy]
@@ -24,7 +24,7 @@ Rails.application.routes.draw do
   end
 
   resources :reviews, only: [:index]
-  
+
   # Routes pour la gestion des photos
   resources :photos, only: [:create, :destroy]
 
