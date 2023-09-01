@@ -1,23 +1,23 @@
 <!-- Hero Start -->
-<div class="cover-hp p-5 text-center bg-image rounded-3" style="background-image: url('https://imgs.search.brave.com/uTOj-18jplYF-W0y7CkGTlJXgUGonp_aIkj2FDicAQ0/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pbWFn/ZXM3LmFscGhhY29k/ZXJzLmNvbS82NjEv/NjYxOTg2LmpwZw');">
+<div class="cover-hp p-5 text-center bg-image rounded-3" style="background-image: url('<%= asset_path('banniere.jpeg') %>');">
   <div class="d-flex justify-content-center align-items-center h-100">
     <div>
-      <h1 class="homepage mb-3">Loue ton Pokemon de compagnie !</h1>
+      <h1 class="homepage mb-3">PokéBNB</h1>
       <h2 class="homepage mb-5">Une large sélection de Pokemon à louer.</h2>
     </div>
   </div>
 </div>
-<%= form_with(action: @pokemons, method: "get", local: true, html: { class: "search-form text-end" }) do |form| %>
-  <div class="d-inline-block">
-    <%= form.text_field :search, placeholder: "Nom ou type du Pokémon", class: "form-control mb-2" %>
-    <%= form.submit "Rechercher", class: "btn btn-danger submit-button" %>
+<%= form_with(url: root_path, method: "get", local: true, html: { class: "search-form d-flex justify-content-end" }) do |form| %>
+    <%= form.text_field :search, placeholder: "Cherche ton Pokémon selon son type ou son nom !", class: "form-control mb-2 me-2" %>
+  <div>
+    <%= form.submit "Rechercher", class: "btn btn-danger submit-button text-white" %>
   </div>
 <% end %>
 
 
 <!-- Main container -->
 <div class="container py-5">
-  <h3><%= image_tag "pikachu.png" %> Pokemon disponibles</h3>
+  <h3 class="rounded-background"><%= image_tag "pikachu.png" %> Pokémon disponibles</h3>
   <% if @pokemons.empty? %>
     <p>Aucun résultat trouvé !</p>
   <% else %>

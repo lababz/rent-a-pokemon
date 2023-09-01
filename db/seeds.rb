@@ -29,7 +29,7 @@ pokemon_data = [
   {
     name: "Pikachu",
     description: "Un petit Pokémon électrique avec des joues rouges.",
-    pokemon_type: "Électrique",
+    pokemon_type: "Electrique",
     location: "Paris",
     image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/025.png"
   },
@@ -78,7 +78,7 @@ pokemon_data = [
   {
     name: "Raichu",
     description: "L'évolution de Pikachu, avec des pouvoirs électriques accrus.",
-    pokemon_type: "Électrique",
+    pokemon_type: "Electrique",
     location: "Parc des Amis",
     image_url: "https://assets.pokemon.com/assets/cms2/img/pokedex/full/026.png"
   }

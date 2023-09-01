@@ -7,21 +7,31 @@ body {
 }
 
 h1.homepage {
-  color: $pika-blue;
-  font-weight: bold;
-  -webkit-text-stroke: 1px;
-  -webkit-text-stroke-color: $pika-yellow;
-  font-family:'Trebuchet MS';
+  color: #dc3545;
+  font-weight: bolder;
+  font-size: 48px;
+  -webkit-text-stroke: 0.8px #f7f7f7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+
 h2.homepage {
-  font-style: italic;
+  // font-style: italic;
   font-size: 24px;
-  color: $pika-yellow;
+  color: #f7f7f7;
+  text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
 h3 {
   margin-bottom: 20px;
+}
+
+.rounded-background {
+  font-size: 36px;
+  color: #f7f7f7; /* Couleur du texte */
+  background: #dc3545; /* Couleur de l'arrière-plan */
+  border-radius: 25px; /* Rayon de l'arrondi */
+  padding: 10px 20px; /* Rembourrage pour définir la taille de l'arrière-plan */
 }
 
 .cover-hp {
