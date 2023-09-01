@@ -4,10 +4,16 @@ class PagesController < ApplicationController
   # Affiche la page d'accueil avec la liste des Pokémon
 
   def home
-    @pokemons = Pokemon.all
-    if params[:pokemon_type].present?
-      @pokemons = @pokemons.where(pokemon_type: params[:pokemon_type])
+    # @pokemons = Pokemon.all
+    # if params[:pokemon_type].present?
+    #   @pokemons = @pokemons.where(pokemon_type: params[:pokemon_type])
+    # end
+    if params[:search].present?
+      @pokemons = Pokemon.search_by_name_and_type(params[:search])
+    else
+      @pokemons = Pokemon.all
     end
+
 
     # The `geocoded` scope filters only pokemons with coordinates = > Same as: @markers = @pokemons.where(latitude: nil, longitude: nil)
     @markers = @pokemons.geocoded.map do |pokemon|
