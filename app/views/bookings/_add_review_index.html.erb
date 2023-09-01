@@ -1,0 +1,22 @@
+<div class="modal fade" id="new_review_modal_index" tabindex="-1" role="dialog">
+  <div class="modal-dialog modal-dialog-centered modal-lg" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 class="modal-title">Laissez-votre avis</h3>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <%= simple_form_for [booking, review] do |f| %>
+        <div class="modal-body">
+          <%= f.input :rating, collection: (1..5).to_a, label: "Ta note", input_html: {data: {controller: "star-rating"}} %>
+          <%= f.input :comment, placeholder: "Ecrivez votre commentaire ici" %>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-outline-danger" data-bs-dismiss="modal"><span class="fa-solid fa-xmark"></span> Annuler</button>
+          <%= button_tag type: 'submit', class: "button postfix btn btn-outline-success" do %>
+            <i class="fa-solid fa-check"></i><span> Valider votre avis</span>
+          <% end %>
+        </div>
+      <% end %>
+    </div>
+  </div>
+</div>

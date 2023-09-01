@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
     @reviews = Review.where(params[:booking_id])
+    @review = Review.new
   end
 
   # Affiche le formulaire de réservation pour un nouveau Pokémon

@@ -10,6 +10,7 @@
   transition: background-color 0.3s, color 0.3s;
   margin-top: 0;
   margin-bottom: 0;
+  max-width: 200px;
 
   &:hover {
     background-color: #c0392b;
@@ -28,6 +29,14 @@
   padding: 20px;
 }
 
-.card-booking-review {
+#carouselShowPokemon {
+  max-height: 517px;
+}
 
+.booking-main {
+  max-height: 517px;
+}
+
+.pokemon-card-img-booking {
+  max-height: 517px;
 }
