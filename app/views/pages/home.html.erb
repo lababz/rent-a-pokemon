@@ -7,9 +7,9 @@
     </div>
   </div>
 </div>
-<%= form_with(url: root_path, method: "get", local: true, html: { class: "search-form text-end" }) do |form| %>
+<%= form_with(action: @pokemons, method: "get", local: true, html: { class: "search-form text-end" }) do |form| %>
   <div class="d-inline-block">
-    <%= form.select :pokemon_type, options_for_select(Pokemon::TYPES, params[:pokemon_type]), include_blank: "Sélectionner un type", class: "select-input custom-select mb-2" %>
+    <%= form.text_field :search, placeholder: "Nom ou type du Pokémon", class: "form-control mb-2" %>
     <%= form.submit "Rechercher", class: "btn btn-danger submit-button" %>
   </div>
 <% end %>
@@ -19,13 +19,16 @@
 <div class="container py-5">
   <h3><%= image_tag "pikachu.png" %> Pokemon disponibles</h3>
   <% if @pokemons.empty? %>
-    <p>No list yet!</p>
+    <p>Aucun résultat trouvé !</p>
   <% else %>
     <!-- Cards -->
     <div class="cards-container">
       <div class="cards-hp">
         <% @pokemons.each do |pokemon| %>
-          <div class="card-hp" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= image_url('https://imgs.search.brave.com/wTLJH0OpadlxectcTPyXJGlFYHBumnpynZLFpqJSj3Y/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9pLnBp/bmltZy5jb20vb3Jp/Z2luYWxzLzJlLzdm/L2Y0LzJlN2ZmNDc5/MGMwYTliMDBiNGM4/ZGY1MWNmNTkzZDFk/LmpwZw') %>')"><%= link_to "", new_pokemon_booking_path(pokemon[:id]) %><%= link_to pokemon[:name], new_pokemon_booking_path(pokemon) %></div>
+          <div class="card-hp" data-aos="zoom-in" style="background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('<%= pokemon.images.first.url %>')">
+            <%= link_to "", new_pokemon_booking_path(pokemon[:id]) %>
+            <%= link_to pokemon[:name], new_pokemon_booking_path(pokemon) %>
+          </div>
         <% end %>
       </div>
     </div>
