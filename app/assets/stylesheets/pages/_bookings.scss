@@ -4,8 +4,7 @@
   flex-wrap: wrap;
   grid-template-columns: 1fr 1fr 1fr;
   grid-gap: 48px;
-  padding: 16px;
-  justify-content: center;
+  justify-content: flex-start;
   margin-bottom: 50px;
 
   .card-booking {
@@ -31,6 +30,10 @@
       a {
         color: $gray;
         text-decoration: none;
+      }
+
+      .regular {
+        font-style: normal;
       }
     }
 

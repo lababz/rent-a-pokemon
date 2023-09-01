@@ -2,6 +2,7 @@ class BookingsController < ApplicationController
   # Affiche toutes les réservations de l'utilisateur connecté
   def index
     @bookings = current_user.bookings
+    @reviews = Review.where(params[:booking_id])
   end
 
   # Affiche le formulaire de réservation pour un nouveau Pokémon
@@ -24,9 +25,9 @@ class BookingsController < ApplicationController
     @booking = @pokemon.bookings.build(booking_params)
     @booking.user = current_user
     if @booking.save
-      redirect_to bookings_path, notice: 'Ton Pokémon a bien été réservé !.'
+      redirect_to bookings_path, notice: 'Ton Pokémon a bien été réservé !'
     else
-      render :new, alert: 'Booking could not be created.'
+      render :new, alert: "La réservation n'a pas pu être créée. Veuillez réessayer et si le pronblème persiste, contactez-nous."
     end
   end
 
@@ -34,7 +35,7 @@ class BookingsController < ApplicationController
   def destroy
     @booking = Booking.find(params[:id])
     @booking.destroy
-    redirect_to root_path, notice: 'Booking was successfully destroyed.'
+    redirect_to bookings_path, notice: 'Réservation annulée ! Nous prévenons le dresseur.'
   end
 
   private
