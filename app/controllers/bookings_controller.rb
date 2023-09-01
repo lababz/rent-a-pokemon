@@ -22,6 +22,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @pokemon = @booking.pokemon
+    @review = Review.new(booking: @booking)
     @marker = [
       {
         lat: @pokemon.latitude,
