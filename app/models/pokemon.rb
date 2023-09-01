@@ -1,19 +1,23 @@
 class Pokemon < ApplicationRecord
-
   # postgre sql search
   include PgSearch::Model
 
   pg_search_scope :search_by_name_and_type,
-  against: [:name, :pokemon_type],
-  using: {
-    tsearch: { prefix: true }
-  },
-  associated_against: {
-    user: [:email] # Ajouter d'autres colonnes associées si nécessaire
-  },
-  using: {
-    tsearch: { dictionary: 'french' } # Choisir le dictionnaire approprié (optionnel)
-  }
+    against: [:name, :pokemon_type],
+    using: {
+      tsearch: {
+        prefix: true,
+        any_word: true,
+        case_sensitive: false, # Activer la sensibilité à la casse
+        accent: true # Activer la prise en compte des accents
+      }
+    },
+    associated_against: {
+      user: [:email] # Ajouter d'autres colonnes associées si nécessaire
+    },
+    using: {
+      tsearch: { dictionary: 'french' } # Choisir le dictionnaire approprié (optionnel)
+    }
 
   # constants
   TYPES = ['Normal', 'Feu', 'Eau', 'Plante', 'Electrique', 'Glace', 'Combat', 'Poison', 'Sol', 'Vol', 'Psy', 'Insecte', 'Roche', 'Spectre', 'Ténèbres', 'Acier', 'Fée']
