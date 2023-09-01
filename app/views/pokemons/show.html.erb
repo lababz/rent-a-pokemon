@@ -1,6 +1,7 @@
 <div class="container">
-  <div class="row justify-content-center align-items-center pokemon-show-container">
+  <div class="row justify-content-center align-items-center pokemon-show-container mt-5 mb-5">
     <div class="col-md-4 pokemon-card pokemon-card-shadow">
+
       <div id="carouselShowPokemon" class="carousel slide">
       <div class="pokemon-card-body">
         <div class="carousel-inner">
@@ -23,6 +24,7 @@
           <div class="pokemon-card">
             <div class="pokemon-card-body">
               <h2 class="pokemon-card-title text-center"><%= @pokemon.name %></h2>
+              <br>
               <p class="pokemon-card-text text-start"><strong>Description:</strong> <br> <%= @pokemon.description %></p>
               <p class="pokemon-card-text text-start"><strong>Pokemon type:</strong> <br> <%= @pokemon.pokemon_type %></p>
               <p class="pokemon-card-text text-start"><strong>Location:</strong> <br> <%= @pokemon.location %></p>
@@ -35,16 +37,31 @@
             </div>
         </div>
       </div>
+<br>
+<br>
+      <div>
+        <h3 class="text-center">Tous les commentaires :</h3>
+        <br>
+          <% @reviews.each do |review| %>
+            <div class="pokemon-card pokemon-card-shadow p-3 mb-3">
+              <div class="pokemon-card-body">
+              <p><strong><%=User.find(review.user_id).email%></strong><p>
+                <%= review.comment %>
+              <% if review.rating == 5%>
+                <%="⭐⭐⭐⭐⭐"%>
+              <% elsif review.rating == 4%>
+                <%="⭐⭐⭐⭐"%>
+              <% elsif review.rating == 3%>
+                <%="⭐⭐⭐"%>
+              <% elsif review.rating == 2%>
+                <%="⭐⭐"%>
+              <% elsif review.rating == 1%>
+                <%="⭐"%>
+              <% end %>
+              </div>
+            </div>
+            <% end %>
+        </div>
     </div>
   </div>
 </div>
-
-<div class="container">
-  <% @reviews.each do |review| %>
-    <div class="card">
-      <%= review.rating %>
-      <%= review.comment %>
-    </div>
-    <% end %>
-</div>
-
