@@ -3,6 +3,7 @@ class BookingsController < ApplicationController
   def index
     @bookings = current_user.bookings
     @reviews = Review.where(params[:booking_id])
+    @review = Review.new
   end
 
   # Affiche le formulaire de réservation pour un nouveau Pokémon
@@ -22,6 +23,7 @@ class BookingsController < ApplicationController
   def show
     @booking = Booking.find(params[:id])
     @pokemon = @booking.pokemon
+    @review = Review.new(booking: @booking)
     @marker = [
       {
         lat: @pokemon.latitude,

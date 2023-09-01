@@ -10,7 +10,7 @@
               <span class="carousel-control-prev-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Previous</span>
             </button>
-          <button class="carousel-control-next" type="button" data-bs-target="#carouselShowPokemon" data-bs-slide="next">
+            <button class="carousel-control-next" type="button" data-bs-target="#carouselShowPokemon" data-bs-slide="next">
               <span class="carousel-control-next-icon" aria-hidden="true"></span>
               <span class="visually-hidden">Next</span>
             </button>
@@ -22,24 +22,27 @@
     <div class="card booking-main">
 
       <div class="pokemon-details mb-0">
-        <h1>Reserve <%= @pokemon.name %></h1>
-        <h3><strong>Type:</strong> <%= @pokemon.pokemon_type %></h3>
+        <h1>#<%= @booking.id %><%= @booking.id %> • <%= @pokemon.name %></h1>
+        <h3><%= @pokemon.pokemon_type %></h3>
         <p>ℹ️ <%= @pokemon.description %></p>
         <p>📍 <%= @pokemon.location %></p>
         <p>🧍 <%= @pokemon.user.email %></p>
         <p>🗓️ Du <%= @booking.start_date %> au <%= @booking.end_date %></p>
         <p>🕝 <%= duration_in_days(@booking.start_date, @booking.end_date) %> jours</p>
         <% if @booking.reviews.empty? %>
-          <button class="btn-add-review">Laisse un avis</button>
+          <button class="btn-add-review btn-lg" data-bs-toggle="modal" data-bs-target="#new_review_modal"><span class="fa-solid fa-plus"></span>  Laisse un avis</button>
+          <%= render "bookings/add_review", booking: @booking, review: @review %>
         <% else %>
-          <p>🌟 <%= @booking.review.rating %>/5</p>
+          <% @booking.reviews.each do |review| %>
+            <h5 class="mt-4 mb-0">Ta note est de <%= review.rating %>/5 <i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
+          <% end %>
         <% end %>
       </div>
 
-        <div class="booking-price-show">
-          <p>Tarif à la journée: <span id="pricePerDay"><%= @pokemon.price %></span>€
-          <br><strong>Prix total: <%= @pokemon.price * duration_in_days(@booking.start_date, @booking.end_date) %> €</strong></p>
-        </div>
+      <div class="booking-price-show">
+        <p>Tarif à la journée: <span id="pricePerDay"><%= @pokemon.price %></span>€
+        <br><strong>Prix total: <%= @pokemon.price * duration_in_days(@booking.start_date, @booking.end_date) %> €</strong></p>
+      </div>
     </div>
   </div>
 
@@ -47,13 +50,16 @@
   <div class="card map-container mb-5" data-controller="map" data-map-marker-value="<%= @marker.to_json %>" data-map-api-key-value="<%= ENV['MAPBOX_API_KEY'] %>"><%= image_tag "logo.png", height: 30, width: 30, alt: "Logo" %></div>
 
   <!-- Reviews -->
-  <div class="card booking-review">
+  <div class="card booking-review justify-content-center">
     <% if @booking.reviews.empty? %>
-      <h3>Es-tu satisfait de <%= @pokemon.name %> ? Laisse ton avis !</h3>
-      <button class="btn-add-review">Laisse un avis</button>
+      <h3 class="align-item-center">Es-tu satisfait de <%= @pokemon.name %> ? Laisse ton avis !</h3>
+      <button class="btn-add-review btn-lg align-self-center" data-bs-toggle="modal" data-bs-target="#new_review_modal"><span class="fa-solid fa-plus"></span>  Laisse un avis</button>
+      <%= render "bookings/add_review", booking: @booking, review: @review %>
     <% else %>
-      <p>🌟 <%= @booking.review.rating %>/5</p>
+      <% @booking.reviews.each do |review| %>
+        <h3><strong>Tu as laissé une note de <%= review.rating %>/5<i class="fas fa-star star-yellow" style="color: #ffca57;"></i></strong></h3>
+        <p><i class="fas fa-quote-left pe-2"></i><%= review.comment %></p>
+      <% end %>
     <% end %>
   </div>
-
 </div>

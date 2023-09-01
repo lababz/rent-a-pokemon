@@ -19,7 +19,7 @@ Rails.application.routes.draw do
   end
 
   # Routes pour la gestion des avis
-  resources :bookings, only: [] do
+  resources :bookings, only: [:index] do
     resources :reviews, only: [:new, :create]
   end
 

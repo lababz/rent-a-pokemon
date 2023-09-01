@@ -14,9 +14,12 @@
             <div class="card-body p-4">
               <!-- Infos sur les pokémons -->
               <% if booking.reviews.empty? %>
-                <h5><%= link_to booking.pokemon.name, booking_path(booking), class: "card-title mb-2" %> <span class="text-muted font-weight-normal">• <%= link_to "Laissez un avis", new_booking_review_path(booking_id: booking.id), class: "text-muted font-weight-normal" %></span></h5>
+                <h5><%= link_to booking.pokemon.name, booking_path(booking), class: "card-title mb-2" %> <button class="btn-booking" data-bs-toggle="modal" data-bs-target="#new_review_modal_index">Laisse un avis</button></h5>
+                <%= render "bookings/add_review_index", booking: booking, review: @review %>
               <% else %>
-                <h5><%= link_to booking.pokemon.name, booking_path(booking), class: "card-title mb-2" %> <span class="text-muted font-weight-normal">• ?/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
+                <% booking.reviews.each do |review| %>
+                <h5><%= link_to booking.pokemon.name, booking_path(booking), class: "card-title mb-2" %> <span class="text-muted font-weight-normal">• <%= review.rating %>/5 </span><i class="fas fa-star star-yellow" style="color: #ffca57;"></i></h5>
+                <% end %>
               <% end %>
               <p class="card-text mb-4"><%= booking.pokemon.description %></p>
               <!-- Contenaire flex pour les infos booking + boutton delete booking -->
