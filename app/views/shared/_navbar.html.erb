@@ -19,11 +19,9 @@
           </li>
           <li class="nav-item dropdown">
           <a href="#" class="avatar" id="navbarDropdown" data-bs-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-            <%= image_tag "https://kitt.lewagon.com/placeholder/users/ssaunier", class: "avatar", alt: "dropdown menu" %>
+            <%= image_tag "https://imgs.search.brave.com/2ifiYpvgw-tPE-XT8k1ct4P5vvoHt20HJ4Y0rCD0FKk/rs:fit:860:0:0/g:ce/aHR0cHM6Ly9zLnBu/Z2tpdC5jb20vcG5n/L3NtYWxsLzE5MS0x/OTE2NzU2X2RvbmFs/ZC1kdWNrLWhlYWQt/cG5nLWNhcmEtZGUt/cGF0by1kb25hbGQu/cG5n", class: "avatar", alt: "dropdown menu" %>
           </a>
             <div class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
-              <%= link_to "Editer le profil", bookings_path, class: "dropdown-item" %>
-              <%= link_to "Paramètres", new_pokemon_path, class: "dropdown-item" %>
               <%= link_to "Se déconnecter", destroy_user_session_path, data: {turbo_method: :delete}, class: "dropdown-item" %>
             </div>
           </li>
